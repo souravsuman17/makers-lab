@@ -570,7 +570,7 @@
           <div class="card-date-col"><label>Time</label><span>11 AM – 4 PM</span></div>
         </div>
         <div class="card-level level-rookie">Project Level: Rookie</div>
-        <div class="card-select-btn">Add to Cart →</div>
+        <div class="card-select-btn">Add to Bundle →</div>
       </div>
     </div>
 
@@ -585,7 +585,7 @@
           <div class="card-date-col"><label>Time</label><span>11 AM – 6 PM</span></div>
         </div>
         <div class="card-level level-veteran">Project Level: Veteran</div>
-        <div class="card-select-btn">Add to Cart →</div>
+        <div class="card-select-btn">Add to Bundle →</div>
       </div>
     </div>
 
@@ -600,7 +600,7 @@
           <div class="card-date-col"><label>Time</label><span>11 AM – 4 PM</span></div>
         </div>
         <div class="card-level level-rookie">Project Level: Rookie</div>
-        <div class="card-select-btn">Add to Cart →</div>
+        <div class="card-select-btn">Add to Bundle →</div>
       </div>
     </div>
 
@@ -615,7 +615,7 @@
           <div class="card-date-col"><label>Time</label><span>11 AM – 6 PM</span></div>
         </div>
         <div class="card-level level-veteran">Project Level: Veteran</div>
-        <div class="card-select-btn">Add to Cart →</div>
+        <div class="card-select-btn">Add to Bundle →</div>
       </div>
     </div>
   </div>
@@ -840,7 +840,7 @@
       if (selected.has(id)) {
         selected.delete(id);
         el.classList.remove('selected');
-        btn.textContent = 'Add to Cart →';
+        btn.textContent = 'Add to Bundle →';
       } else {
         selected.add(id);
         el.classList.add('selected');
@@ -852,7 +852,7 @@
     function removeItem(id) {
       selected.delete(id);
       const card = document.querySelector(`.card[data-id="${id}"]`);
-      if (card) { card.classList.remove('selected'); card.querySelector('.card-select-btn').textContent = 'Add to Cart →'; }
+      if (card) { card.classList.remove('selected'); card.querySelector('.card-select-btn').textContent = 'Add to Bundle →'; }
       updateCheckout();
     }
 
