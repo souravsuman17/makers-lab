@@ -18,12 +18,7 @@
       --text-dark: #111;
     }
 
-    @media (max-width: 767px) {
-      html{
-        zoom: 85%;
-      }
-    }
-
+    @media (max-width: 767px) { html { zoom: 85%; } }
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -34,7 +29,6 @@
       overflow-x: hidden;
     }
 
-    /* ── HEADER ── */
     header {
       position: relative;
       padding: 18px 24px 0;
@@ -46,7 +40,6 @@
       z-index: 2;
     }
 
-    /* ── HERO ── */
     .hero {
       position: relative;
       text-align: center;
@@ -77,14 +70,12 @@
       line-height: 1.5;
     }
 
-    /* ── DASHED DIVIDER ── */
     .dashed-divider {
       border: none;
       border-top: 3px dashed rgba(255,255,255,0.35);
       margin: 18px 20px;
     }
 
-    /* ── BUILD LOG SECTION ── */
     .build-log-title {
       text-align: center;
       font-family: 'Bangers', cursive;
@@ -102,12 +93,8 @@
       margin-bottom: 18px;
       font-weight: 700;
       letter-spacing: 0.5px;
-
-      @media (max-width: 767px) {
-      font-size: 0.58rem !important;
-
-      }
     }
+    @media (max-width: 767px) { .select-hint { font-size: 0.58rem !important; } }
     .select-hint span {
       background: rgba(255,230,0,0.15);
       border: 1px dashed rgba(255,230,0,0.5);
@@ -116,7 +103,32 @@
       color: var(--yellow);
     }
 
-    /* ── CARDS GRID ── */
+    .discount-tiers {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding: 0 20px;
+    }
+    .tier-badge {
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.25);
+      border-radius: 30px;
+      padding: 5px 16px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.7);
+      transition: all 0.25s ease;
+    }
+    .tier-badge.active {
+      background: rgba(255,230,0,0.2);
+      border-color: var(--yellow);
+      color: var(--yellow);
+      transform: scale(1.05);
+    }
+
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -126,7 +138,6 @@
       margin: 0 auto;
     }
 
-    /* ── CARD ── */
     .card {
       background: var(--yellow);
       border-radius: 14px;
@@ -143,217 +154,344 @@
       outline: 3px solid transparent;
       outline-offset: 2px;
     }
-    .card:hover {
-      transform: translateY(-6px) rotate(-0.5deg);
-      box-shadow: 0 12px 0 #b8a000, 0 18px 40px rgba(0,0,0,0.4);
-    }
+    .card:hover { transform: translateY(-6px) rotate(-0.5deg); box-shadow: 0 12px 0 #b8a000, 0 18px 40px rgba(0,0,0,0.4); }
     .card:active { transform: translateY(0); }
-
-    /* Selected state */
     .card.selected {
       outline: 4px solid #fff;
       transform: translateY(-4px);
       box-shadow: 0 0 0 4px #fff, 0 12px 0 #b8a000, 0 20px 40px rgba(0,0,0,0.45);
     }
-    .card.selected .card-select-btn {
-      background: #fff;
-      color: var(--blue-dark);
-    }
-    .card.selected .card-select-btn::before {
-      content: '✓  ';
-    }
-    .card.selected .select-ring {
-      opacity: 1;
-    }
+    .card.selected .card-select-btn { background: #fff; color: var(--blue-dark); }
+    .card.selected .card-select-btn::before { content: '✓  '; }
+    .card.selected .select-ring { opacity: 1; }
 
-    /* Checkmark badge */
     .select-ring {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 32px;
-      height: 32px;
+      position: absolute; top: 10px; right: 10px;
+      width: 32px; height: 32px;
       background: var(--blue-dark);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--yellow);
-      font-size: 1rem;
-      font-weight: 900;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      z-index: 3;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--yellow); font-size: 1rem; font-weight: 900;
+      opacity: 0; transition: opacity 0.2s ease; z-index: 3;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
     .card-img-placeholder {
-      width: 100%;
-      height: 170px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%; height: 170px;
+      display: flex; align-items: center; justify-content: center;
       font-size: 3.2rem;
       border-bottom: 3px solid #e0c000;
-      position: relative;
     }
 
     .card-body { padding: 14px 14px 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
-
     .card-title {
-      font-family: 'Bangers', cursive;
-      font-size: 1.15rem;
-      letter-spacing: 0.5px;
-      line-height: 1.2;
-      text-align: center;
-      color: var(--blue-dark);
-      text-transform: uppercase;
+      font-family: 'Bangers', cursive; font-size: 1.15rem;
+      letter-spacing: 0.5px; line-height: 1.2;
+      text-align: center; color: var(--blue-dark); text-transform: uppercase;
     }
-
-    .card-fee {
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-align: center;
-      color: #333;
-    }
-
-    .card-date-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      margin-top: 2px;
-    }
+    .card-fee { font-size: 0.82rem; font-weight: 700; text-align: center; color: #333; }
+    .card-date-row { display: flex; justify-content: space-between; gap: 8px; margin-top: 2px; }
     .card-date-col { flex: 1; }
-    .card-date-col label {
-      display: block;
-      font-size: 0.62rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #555;
-      margin-bottom: 1px;
-    }
-    .card-date-col span {
-      font-family: 'Bangers', cursive;
-      font-size: 1.15rem;
-      color: var(--blue-dark);
-      letter-spacing: 0.5px;
-    }
-
-    .card-level {
-      display: inline-block;
-      margin-top: 6px;
-      padding: 5px 14px;
-      border-radius: 5px;
-      font-size: 0.78rem;
-      font-weight: 900;
-      color: white;
-      text-align: center;
-      letter-spacing: 0.5px;
-    }
+    .card-date-col label { display: block; font-size: 0.62rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: #555; margin-bottom: 1px; }
+    .card-date-col span { font-family: 'Bangers', cursive; font-size: 1.15rem; color: var(--blue-dark); letter-spacing: 0.5px; }
+    .card-level { display: inline-block; margin-top: 6px; padding: 5px 14px; border-radius: 5px; font-size: 0.78rem; font-weight: 900; color: white; text-align: center; letter-spacing: 0.5px; }
     .level-rookie { background: var(--red); }
     .level-veteran { background: var(--green); }
-
     .card-select-btn {
-      margin-top: auto;
-      padding: 9px 14px;
-      background: var(--blue);
-      color: var(--yellow);
-      font-family: 'Bangers', cursive;
-      font-size: 1.05rem;
-      letter-spacing: 1px;
-      text-align: center;
-      border-radius: 8px;
+      margin-top: auto; padding: 9px 14px;
+      background: var(--blue); color: var(--yellow);
+      font-family: 'Bangers', cursive; font-size: 1.05rem; letter-spacing: 1px;
+      text-align: center; border-radius: 8px;
       transition: background 0.15s, color 0.15s;
     }
 
-    /* ── CHECKOUT BAR ── */
+    /* CHECKOUT BAR */
     .checkout-bar {
       background: rgba(255,255,255,0.07);
       border: 2px solid rgba(255,255,255,0.15);
       backdrop-filter: blur(6px);
       border-radius: 20px;
-      margin: 0 20px 30px;
+      margin: 0 auto 30px;
       max-width: 1060px;
-      margin-left: auto;
-      margin-right: auto;
       padding: 22px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 18px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 18px;
       animation: float-in 0.9s ease 0.25s both;
     }
-
-    .checkout-left {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      min-width: 200px;
-    }
-
-    .checkout-selected-label {
-      font-size: 0.75rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-    }
-
-    .checkout-items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      min-height: 28px;
-    }
-
+    .checkout-left { display: flex; flex-direction: column; gap: 6px; min-width: 200px; }
+    .checkout-selected-label { font-size: 0.75rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+    .checkout-items { display: flex; flex-wrap: wrap; gap: 6px; min-height: 28px; }
     .checkout-tag {
-      background: rgba(255,230,0,0.18);
-      border: 1.5px solid var(--yellow);
-      color: var(--yellow);
-      font-size: 0.72rem;
-      font-weight: 900;
-      padding: 3px 10px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      background: rgba(255,230,0,0.18); border: 1.5px solid var(--yellow);
+      color: var(--yellow); font-size: 0.72rem; font-weight: 900;
+      padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px;
+      display: flex; align-items: center; gap: 5px;
     }
-    .checkout-tag .remove-tag {
-      cursor: pointer;
-      font-size: 0.85rem;
-      opacity: 0.7;
-      transition: opacity 0.1s;
-    }
+    .checkout-tag .remove-tag { cursor: pointer; font-size: 0.85rem; opacity: 0.7; transition: opacity 0.1s; }
     .checkout-tag .remove-tag:hover { opacity: 1; }
-
-    .empty-hint {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.35);
-      font-style: italic;
-    }
-
-    /* Pricing block */
-    .checkout-pricing {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 2px;
-      min-width: 180px;
-    }
-
+    .empty-hint { font-size: 0.8rem; color: rgba(255,255,255,0.35); font-style: italic; }
+    .checkout-pricing { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; min-width: 200px; }
     .discount-badge {
+      background: var(--green); color: #fff; font-size: 0.75rem; font-weight: 900;
+      padding: 3px 10px; border-radius: 20px; letter-spacing: 1px; animation: pop 0.3s ease;
+    }
+    .price-original { font-size: 0.95rem; font-weight: 700; color: rgba(255,255,255,0.45); text-decoration: line-through; }
+    .price-final { font-family: 'Bangers', cursive; font-size: 2rem; color: var(--yellow); letter-spacing: 1px; line-height: 1; }
+    .price-final small { font-family: 'Nunito', sans-serif; font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
+    .price-gst-note { font-size: 0.68rem; color: rgba(255,255,255,0.45); font-weight: 700; letter-spacing: 0.5px; }
+
+    .pay-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--yellow); color: var(--blue-dark);
+      font-family: 'Bangers', cursive; font-size: 1.5rem; letter-spacing: 2px;
+      padding: 14px 32px; border-radius: 12px; border: none; cursor: pointer;
+      box-shadow: 0 6px 0 #b8a000; transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+      white-space: nowrap;
+    }
+    .pay-btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 9px 0 #b8a000; }
+    .pay-btn:active:not(:disabled) { transform: translateY(1px); box-shadow: 0 3px 0 #b8a000; }
+    .pay-btn:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: 0 4px 0 #b8a000; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(10, 30, 80, 0.88);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--blue-dark);
+      border: 2px solid rgba(255,230,0,0.25);
+      border-radius: 20px;
+      width: 100%; max-width: 540px; max-height: 92vh;
+      overflow-y: auto;
+      padding: 32px 28px 28px;
+      transform: translateY(30px) scale(0.97);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,230,0,0.3) transparent;
+    }
+    .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+
+    .modal-close {
+      position: absolute; top: 16px; right: 18px;
+      background: rgba(255,255,255,0.1); border: none; color: var(--white);
+      width: 32px; height: 32px; border-radius: 50%;
+      cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.2); }
+
+    .modal-title { font-family: 'Bangers', cursive; font-size: 1.9rem; color: var(--yellow); letter-spacing: 2px; margin-bottom: 4px; }
+    .modal-subtitle { font-size: 0.8rem; color: rgba(255,255,255,0.55); font-weight: 700; letter-spacing: 0.5px; margin-bottom: 20px; }
+
+    .modal-order-summary {
+      background: rgba(255,230,0,0.07);
+      border: 1.5px dashed rgba(255,230,0,0.3);
+      border-radius: 12px; padding: 14px 16px; margin-bottom: 22px;
+    }
+    .modal-order-label { font-size: 0.68rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+    .modal-order-items { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .modal-order-tag {
+      background: rgba(255,230,0,0.15); border: 1px solid rgba(255,230,0,0.4);
+      color: var(--yellow); font-size: 0.72rem; font-weight: 900;
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .modal-order-pricing { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+    .modal-order-breakdown { font-size: 0.72rem; color: rgba(255,255,255,0.5); font-weight: 700; line-height: 1.7; }
+    .modal-order-total { font-family: 'Bangers', cursive; font-size: 1.6rem; color: var(--yellow); letter-spacing: 1px; text-align: right; }
+    .modal-order-total small { font-family: 'Nunito', sans-serif; font-size: 0.68rem; color: rgba(255,255,255,0.4); display: block; letter-spacing: 1px; }
+
+    /* Form */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .form-group label { font-size: 0.7rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+    .form-group label span.req { color: var(--yellow); }
+    .form-group input, .form-group textarea, .form-group select {
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 8px; padding: 10px 13px;
+      color: var(--white); font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem; font-weight: 700;
+      transition: border-color 0.15s, background 0.15s;
+      outline: none; width: 100%;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); font-weight: 400; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--yellow); background: rgba(255,230,0,0.07); }
+    .form-group input.error, .form-group textarea.error { border-color: var(--red); background: rgba(229,57,53,0.07); }
+    .form-group .field-error { font-size: 0.68rem; font-weight: 700; color: #ff8a80; letter-spacing: 0.3px; display: none; }
+    .form-group .field-error.show { display: block; }
+
+    /* ── TOAST / INLINE BANNER ── */
+    .form-banner {
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      line-height: 1.5;
+      display: none;
+      gap: 10px;
+      align-items: flex-start;
+      animation: slideDown 0.3s ease;
+    }
+    .form-banner.show { display: flex; }
+    .form-banner.error-banner {
+      background: rgba(229,57,53,0.15);
+      border: 1.5px solid rgba(229,57,53,0.5);
+      color: #ff8a80;
+    }
+    .form-banner.warn-banner {
+      background: rgba(255,152,0,0.12);
+      border: 1.5px solid rgba(255,152,0,0.45);
+      color: #ffcc80;
+    }
+    .form-banner.info-banner {
+      background: rgba(255,230,0,0.08);
+      border: 1.5px solid rgba(255,230,0,0.3);
+      color: rgba(255,255,255,0.8);
+    }
+    .banner-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .banner-body { flex: 1; }
+    .banner-title { font-size: 0.82rem; font-weight: 900; margin-bottom: 2px; }
+    .banner-msg { font-weight: 700; opacity: 0.85; }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Submit button */
+    .submit-btn {
+      width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--yellow); color: var(--blue-dark);
+      font-family: 'Bangers', cursive; font-size: 1.4rem; letter-spacing: 2px;
+      padding: 14px 32px; border-radius: 12px; border: none; cursor: pointer;
+      box-shadow: 0 5px 0 #b8a000; transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+      margin-top: 6px;
+    }
+    .submit-btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 8px 0 #b8a000; }
+    .submit-btn:active:not(:disabled) { transform: translateY(1px); box-shadow: 0 2px 0 #b8a000; }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .submit-btn .spinner {
+      width: 18px; height: 18px;
+      border: 3px solid rgba(13,71,161,0.3);
+      border-top-color: var(--blue-dark);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    .submit-btn.loading .spinner { display: block; }
+    .submit-btn.loading .btn-text { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── REDIRECT LOADING STATE ── */
+    .redirect-state {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      padding: 30px 10px;
+    }
+    .redirect-state.show { display: flex; }
+
+    .redirect-spinner-wrap {
+      position: relative;
+      width: 72px; height: 72px;
+    }
+    .redirect-ring {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 4px solid rgba(255,230,0,0.15);
+      border-top-color: var(--yellow);
+      animation: spin 0.9s linear infinite;
+    }
+    .redirect-ring-2 {
+      position: absolute; inset: 8px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,230,0,0.08);
+      border-bottom-color: rgba(255,230,0,0.5);
+      animation: spin 1.4s linear infinite reverse;
+    }
+    .redirect-icon-center {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .redirect-title {
+      font-family: 'Bangers', cursive;
+      font-size: 1.8rem; color: var(--yellow); letter-spacing: 2px;
+    }
+    .redirect-steps {
+      display: flex; flex-direction: column; gap: 8px;
+      width: 100%;
+    }
+    .redirect-step {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      font-size: 0.82rem; font-weight: 700;
+      transition: all 0.3s ease;
+      color: rgba(255,255,255,0.35);
+    }
+    .redirect-step .step-icon {
+      width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; flex-shrink: 0;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.3);
+      transition: all 0.3s ease;
+    }
+    .redirect-step.active {
+      background: rgba(255,230,0,0.1);
+      border: 1px solid rgba(255,230,0,0.25);
+      color: rgba(255,255,255,0.9);
+    }
+    .redirect-step.active .step-icon {
+      background: var(--yellow);
+      color: var(--blue-dark);
+      animation: pulse-icon 1s ease infinite;
+    }
+    .redirect-step.done {
+      background: rgba(46,125,50,0.12);
+      border: 1px solid rgba(46,125,50,0.35);
+      color: rgba(255,255,255,0.7);
+    }
+    .redirect-step.done .step-icon {
       background: var(--green);
       color: #fff;
-      font-size: 0.75rem;
-      font-weight: 900;
-      padding: 3px 10px;
-      border-radius: 20px;
-      letter-spacing: 1px;
-      animation: pop 0.3s ease;
     }
+    @keyframes pulse-icon {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-state {
+      display: none; flex-direction: column; align-items: center;
+      text-align: center; gap: 12px; padding: 20px 0;
+    }
+    .success-state.show { display: flex; }
+    .success-icon {
+      width: 70px; height: 70px; background: var(--green);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; animation: pop 0.4s ease;
+    }
+    .success-title { font-family: 'Bangers', cursive; font-size: 2rem; color: var(--yellow); letter-spacing: 2px; }
+    .success-sub { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
 
     @keyframes pop {
       0% { transform: scale(0.7); opacity: 0; }
@@ -361,95 +499,18 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    .price-original {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.45);
-      text-decoration: line-through;
-    }
-
-    .price-final {
-      font-family: 'Bangers', cursive;
-      font-size: 2rem;
-      color: var(--yellow);
-      letter-spacing: 1px;
-      line-height: 1;
-    }
-    .price-final small {
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 1px;
-    }
-
-    /* ── PAY NOW BUTTON ── */
-    .pay-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--yellow);
-      color: var(--blue-dark);
-      font-family: 'Bangers', cursive;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      padding: 14px 32px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 6px 0 #b8a000;
-      transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
-      white-space: nowrap;
-    }
-    .pay-btn:hover:not(:disabled) {
-      transform: translateY(-3px);
-      box-shadow: 0 9px 0 #b8a000;
-    }
-    .pay-btn:active:not(:disabled) {
-      transform: translateY(1px);
-      box-shadow: 0 3px 0 #b8a000;
-    }
-    .pay-btn:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-      box-shadow: 0 4px 0 #b8a000;
-    }
-
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
-      background: var(--yellow);
-      text-align: center;
+      background: var(--yellow); text-align: center;
       padding: 14px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+      display: flex; justify-content: center; align-items: center;
+      gap: 10px; flex-wrap: wrap;
     }
-    .footer-brand {
-      font-family: 'Bangers', cursive;
-      font-size: 1.3rem;
-      color: var(--blue-dark);
-      letter-spacing: 1px;
-    }
-    .footer-powered {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #444;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    .footer-mu {
-      font-family: 'Bangers', cursive;
-      font-size: 1.2rem;
-      color: var(--blue-dark);
-    }
-    .footer-powered a {
-      color: #444;
-      text-decoration: none;
-    }
+    .footer-brand { font-family: 'Bangers', cursive; font-size: 1.3rem; color: var(--blue-dark); letter-spacing: 1px; }
+    .footer-powered { font-size: 0.75rem; font-weight: 700; color: #444; letter-spacing: 1px; text-transform: uppercase; }
+    .footer-mu { font-family: 'Bangers', cursive; font-size: 1.2rem; color: var(--blue-dark); }
+    .footer-powered a { color: #444; text-decoration: none; }
 
-    /* ── ANIMATIONS ── */
     @keyframes float-in {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -457,7 +518,6 @@
     .hero { animation: float-in 0.7s ease both; }
     .cards-grid { animation: float-in 0.9s ease 0.15s both; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
       .checkout-bar { flex-direction: column; align-items: stretch; padding: 18px 16px; }
       .checkout-pricing { align-items: flex-start; }
@@ -469,21 +529,17 @@
       .card-img-placeholder { height: 130px; }
       .card-title { font-size: 0.95rem; }
     }
-    @media (max-width: 380px) {
-      .cards-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 380px) { .cards-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <div class="logo-left">
       <img src="https://files.mastersunion.link/resources/animateds/logoanimationblack.gif" alt="Masters' Union" style="height:96px; filter: invert(1) brightness(2);" />
     </div>
   </header>
 
-  <!-- Hero -->
   <div class="hero">
     <p class="hero-attention">Attention, Students!</p>
     <h1 class="hero-title">NextGen<br>Makers Camp</h1>
@@ -492,125 +548,97 @@
 
   <hr class="dashed-divider"/>
 
-  <!-- Build Log -->
   <h2 class="build-log-title">The Build <span>Log</span></h2>
-  <p class="select-hint"><span>👆 Tap any workshop card to select it — pick 2+ and save 10%</span></p>
+  <p class="select-hint"><span>👆 Tap any workshop card to select it — bundle & save more!</span></p>
+
+  <div class="discount-tiers">
+    <div class="tier-badge" id="tier1">1 Workshop — Full Price</div>
+    <div class="tier-badge" id="tier2">Any 2 — Save 20%</div>
+    <div class="tier-badge" id="tier3">Any 3 — Save 30%</div>
+    <div class="tier-badge" id="tier4">All 4 — Save 40%</div>
+  </div>
 
   <div class="cards-grid" id="cardsGrid">
-
-    <!-- Card 1 -->
-    <div class="card" data-id="1" data-name="AI Bionic Hand" data-price="4000" data-url="https://dinero.mastersunion.org/make-payment?code=1ZJpiwTE0HwjL7y" onclick="toggleCard(this)">
+    <div class="card" data-id="1" data-name="AI Bionic Hand" data-price="4000" data-combo="bionic_hand" onclick="toggleCard(this)">
       <div class="select-ring">✓</div>
       <div class="card-img-placeholder" style="background: linear-gradient(135deg,#1565C0 0%,#42a5f5 100%);">🦾</div>
       <div class="card-body">
         <div class="card-title">AI Gesture Controlled Bionic Hand</div>
         <div class="card-fee">Fee : ₹4,000 + GST</div>
         <div class="card-date-row">
-          <div class="card-date-col">
-            <label>Date</label>
-            <span>28 May '26</span>
-          </div>
-          <div class="card-date-col">
-            <label>Time</label>
-            <span>11 AM – 4 PM</span>
-          </div>
+          <div class="card-date-col"><label>Date</label><span>28 May '26</span></div>
+          <div class="card-date-col"><label>Time</label><span>11 AM – 4 PM</span></div>
         </div>
         <div class="card-level level-rookie">Project Level: Rookie</div>
         <div class="card-select-btn">Add to Cart →</div>
       </div>
     </div>
 
-    <!-- Card 2 -->
-    <div class="card" data-id="2" data-name="3D Spider Robot" data-price="7500" data-url="https://dinero.mastersunion.org/make-payment?code=EelsPaZbK5eWCoq" onclick="toggleCard(this)">
+    <div class="card" data-id="2" data-name="3D Spider Robot" data-price="7500" data-combo="spider_robot" onclick="toggleCard(this)">
       <div class="select-ring">✓</div>
       <div class="card-img-placeholder" style="background: linear-gradient(135deg,#e53935 0%,#ff8f00 100%);">🕷️</div>
       <div class="card-body">
         <div class="card-title">3D Printed Spider Robot with Surveillance</div>
         <div class="card-fee">Fee : ₹7,500 + GST</div>
         <div class="card-date-row">
-          <div class="card-date-col">
-            <label>Date</label>
-            <span>29 May '26</span>
-          </div>
-          <div class="card-date-col">
-            <label>Time</label>
-            <span>11 AM – 6 PM</span>
-          </div>
+          <div class="card-date-col"><label>Date</label><span>29 May '26</span></div>
+          <div class="card-date-col"><label>Time</label><span>11 AM – 6 PM</span></div>
         </div>
         <div class="card-level level-veteran">Project Level: Veteran</div>
         <div class="card-select-btn">Add to Cart →</div>
       </div>
     </div>
 
-    <!-- Card 3 -->
-    <div class="card" data-id="3" data-name="NFC Tag Workshop" data-price="4000" data-url="https://dinero.mastersunion.org/make-payment?code=oIzOYPHhTxvNdem" onclick="toggleCard(this)">
+    <div class="card" data-id="3" data-name="NFC Tag Workshop" data-price="4000" data-combo="nfc_tag" onclick="toggleCard(this)">
       <div class="select-ring">✓</div>
       <div class="card-img-placeholder" style="background: linear-gradient(135deg,#2e7d32 0%,#66bb6a 100%);">📱</div>
       <div class="card-body">
         <div class="card-title">NFC Tag Making Workshop</div>
         <div class="card-fee">Fee : ₹4,000 + GST</div>
         <div class="card-date-row">
-          <div class="card-date-col">
-            <label>Date</label>
-            <span>4 June '26</span>
-          </div>
-          <div class="card-date-col">
-            <label>Time</label>
-            <span>11 AM – 4 PM</span>
-          </div>
+          <div class="card-date-col"><label>Date</label><span>4 June '26</span></div>
+          <div class="card-date-col"><label>Time</label><span>11 AM – 4 PM</span></div>
         </div>
         <div class="card-level level-rookie">Project Level: Rookie</div>
         <div class="card-select-btn">Add to Cart →</div>
       </div>
     </div>
 
-    <!-- Card 4 -->
-    <div class="card" data-id="4" data-name="RC Car Soccer" data-price="7500" data-url="https://dinero.mastersunion.org/make-payment?code=rHofuU9FR4fOR0l" onclick="toggleCard(this)">
+    <div class="card" data-id="4" data-name="RC Car Soccer" data-price="7500" data-combo="rc_car" onclick="toggleCard(this)">
       <div class="select-ring">✓</div>
       <div class="card-img-placeholder" style="background: linear-gradient(135deg,#6a1b9a 0%,#ab47bc 100%);">🚗</div>
       <div class="card-body">
         <div class="card-title">RC (Remote Controlled) Car Soccer Game</div>
         <div class="card-fee">Fee : ₹7,500 + GST</div>
         <div class="card-date-row">
-          <div class="card-date-col">
-            <label>Date</label>
-            <span>5 June '26</span>
-          </div>
-          <div class="card-date-col">
-            <label>Time</label>
-            <span>11 AM – 6 PM</span>
-          </div>
+          <div class="card-date-col"><label>Date</label><span>5 June '26</span></div>
+          <div class="card-date-col"><label>Time</label><span>11 AM – 6 PM</span></div>
         </div>
         <div class="card-level level-veteran">Project Level: Veteran</div>
         <div class="card-select-btn">Add to Cart →</div>
       </div>
     </div>
-
   </div>
 
-  <!-- ── CHECKOUT BAR ── -->
-  <div class="checkout-bar" id="checkoutBar" style="margin-bottom:30px;">
+  <!-- CHECKOUT BAR -->
+  <div class="checkout-bar" id="checkoutBar">
     <div class="checkout-left">
       <div class="checkout-selected-label">Selected Workshops</div>
       <div class="checkout-items" id="checkoutItems">
         <span class="empty-hint">No workshop selected yet…</span>
       </div>
     </div>
-
     <div class="checkout-pricing" id="pricingBlock">
-      <div id="discountBadge" style="display:none;" class="discount-badge">🎉 10% BUNDLE DISCOUNT</div>
+      <div id="discountBadge" style="display:none;" class="discount-badge"></div>
       <div id="originalPrice" style="display:none;" class="price-original"></div>
-      <div class="price-final" id="finalPrice" style="color: rgba(255,255,255,0.3);">
-        ₹0 <small>+ GST</small>
-      </div>
+      <div class="price-final" id="finalPrice" style="color: rgba(255,255,255,0.3);">₹0 <small>+ GST</small></div>
+      <div id="gstNote" style="display:none;" class="price-gst-note"></div>
     </div>
-
-    <button class="pay-btn" id="payBtn" disabled onclick="handlePay()">
+    <button class="pay-btn" id="payBtn" disabled onclick="openRegistrationModal()">
       <i class="fa-solid fa-bolt"></i> Pay Now
     </button>
   </div>
 
-  <!-- Footer -->
   <footer>
     <span class="footer-brand">Makers Lab</span>
     <span class="footer-powered">Powered By</span>
@@ -623,13 +651,157 @@
     </span>
   </footer>
 
+  <!-- ── REGISTRATION MODAL ── -->
+  <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalCloseBtn" onclick="closeModal()">✕</button>
+
+      <!-- ── FORM STATE ── -->
+      <div id="formState">
+        <div class="modal-title">Almost There! 🚀</div>
+        <div class="modal-subtitle">Fill in your details to confirm registration</div>
+
+        <!-- Order Summary -->
+        <div class="modal-order-summary">
+          <div class="modal-order-label">Your Order</div>
+          <div class="modal-order-items" id="modalOrderItems"></div>
+          <div class="modal-order-pricing">
+            <div class="modal-order-breakdown" id="modalBreakdown"></div>
+            <div class="modal-order-total" id="modalTotal"></div>
+          </div>
+        </div>
+
+        <!-- Inline Banner (errors / warnings / info) -->
+        <div class="form-banner" id="formBanner">
+          <div class="banner-icon" id="bannerIcon"></div>
+          <div class="banner-body">
+            <div class="banner-title" id="bannerTitle"></div>
+            <div class="banner-msg" id="bannerMsg"></div>
+          </div>
+        </div>
+
+        <!-- Form fields -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name <span class="req">*</span></label>
+            <input type="text" id="f_name" placeholder="e.g. Riya Sharma" />
+            <span class="field-error" id="e_name">Name is required</span>
+          </div>
+          <div class="form-group">
+            <label>Mobile <span class="req">*</span></label>
+            <input type="tel" id="f_mobile" placeholder="10-digit number" maxlength="10" />
+            <span class="field-error" id="e_mobile">Valid mobile number required</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address <span class="req">*</span></label>
+          <input type="email" id="f_email" placeholder="you@example.com" />
+          <span class="field-error" id="e_email">Valid email is required</span>
+        </div>
+
+        <div class="form-group">
+          <label>Address <span class="req">*</span></label>
+          <input type="text" id="f_address" placeholder="City, State" />
+          <span class="field-error" id="e_address">Address is required</span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Company / School <span class="req">*</span></label>
+            <input type="text" id="f_company" placeholder="Your organisation" />
+            <span class="field-error" id="e_company">Company/School is required</span>
+          </div>
+          <div class="form-group">
+            <label>Designation <span class="req">*</span></label>
+            <input type="text" id="f_designation" placeholder="e.g. Student, Engineer" />
+            <span class="field-error" id="e_designation">Designation is required</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>LinkedIn Profile <span class="req">*</span></label>
+          <input type="url" id="f_linkedin" placeholder="https://linkedin.com/in/your-profile" />
+          <span class="field-error" id="e_linkedin">LinkedIn URL is required</span>
+        </div>
+
+        <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+          <div class="spinner"></div>
+          <span class="btn-text"><i class="fa-solid fa-lock"></i> &nbsp;Confirm & Proceed to Pay</span>
+        </button>
+
+        <p style="text-align:center; font-size:0.7rem; color:rgba(255,255,255,0.35); margin-top:12px; font-weight:700;">
+          🔒 Secure payment via Razorpay 
+        </p>
+      </div>
+
+      <!-- ── REDIRECT / LOADING STATE ── -->
+      <div class="redirect-state" id="redirectState">
+        <div class="redirect-spinner-wrap">
+          <div class="redirect-ring"></div>
+          <div class="redirect-ring-2"></div>
+          <div class="redirect-icon-center">💳</div>
+        </div>
+        <div class="redirect-title">Setting Up Payment</div>
+        <div class="redirect-steps">
+          <div class="redirect-step" id="step1">
+            <div class="step-icon"><i class="fa-solid fa-user-check"></i></div>
+            <span>Saving your registration</span>
+          </div>
+          <div class="redirect-step" id="step2">
+            <div class="step-icon"><i class="fa-solid fa-link"></i></div>
+            <span>Generating secure payment link</span>
+          </div>
+          <div class="redirect-step" id="step3">
+            <div class="step-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            <span>Redirecting to payment page…</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SUCCESS STATE ── -->
+      <div class="success-state" id="successState">
+        <div class="success-icon">✓</div>
+        <div class="success-title">You're Registered!</div>
+        <p class="success-sub">Your registration is saved.<br/>Complete the payment in the opened window to confirm your seat.</p>
+        <button class="submit-btn" onclick="closeModal()" style="margin-top:8px; font-size:1.1rem;">
+          <span class="btn-text">Done</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <script>
+    const GST_RATE = 0.18;
+    // const BASE_URL = 'http://localhost:32000/api';  // for the local testing api
+    const BASE_URL = 'https://api.mastersunion.org/api';   // live api 
+    const DISCOUNT_MAP = { 1: 0, 2: 0.20, 3: 0.30, 4: 0.40 };
     const selected = new Set();
 
+    /* ─── PRICING ─── */
+    function getDiscount() { return DISCOUNT_MAP[selected.size] || 0; }
+
+    function buildPackageCombo() {
+      const cards = [...selected].map(id => document.querySelector(`.card[data-id="${id}"]`));
+      if (selected.size === 1) return cards[0].dataset.combo;
+      return cards.map(c => c.dataset.combo).sort().join('_plus_');
+    }
+
+    function calcPricing() {
+      let base = 0;
+      selected.forEach(id => { base += parseInt(document.querySelector(`.card[data-id="${id}"]`).dataset.price); });
+      const discount = getDiscount();
+      const afterDiscount = Math.round(base * (1 - discount));
+      const gst = Math.round(afterDiscount * GST_RATE);
+      const total = afterDiscount + gst;
+      return { base, discount, afterDiscount, gst, total };
+    }
+
+    /* ─── CARD TOGGLE ─── */
     function toggleCard(el) {
       const id = el.dataset.id;
       const btn = el.querySelector('.card-select-btn');
-
       if (selected.has(id)) {
         selected.delete(id);
         el.classList.remove('selected');
@@ -639,17 +811,13 @@
         el.classList.add('selected');
         btn.textContent = 'Remove';
       }
-
       updateCheckout();
     }
 
     function removeItem(id) {
       selected.delete(id);
       const card = document.querySelector(`.card[data-id="${id}"]`);
-      if (card) {
-        card.classList.remove('selected');
-        card.querySelector('.card-select-btn').textContent = 'Add to Cart →';
-      }
+      if (card) { card.classList.remove('selected'); card.querySelector('.card-select-btn').textContent = 'Add to Cart →'; }
       updateCheckout();
     }
 
@@ -659,65 +827,296 @@
       const finalPriceEl = document.getElementById('finalPrice');
       const originalPriceEl = document.getElementById('originalPrice');
       const discountBadge = document.getElementById('discountBadge');
+      const gstNote = document.getElementById('gstNote');
 
-      // Tags
+      document.querySelectorAll('.tier-badge').forEach(b => b.classList.remove('active'));
+      if (selected.size > 0) document.getElementById(`tier${selected.size}`).classList.add('active');
+
       if (selected.size === 0) {
         itemsEl.innerHTML = '<span class="empty-hint">No workshop selected yet…</span>';
         finalPriceEl.innerHTML = '₹0 <small>+ GST</small>';
         finalPriceEl.style.color = 'rgba(255,255,255,0.3)';
         originalPriceEl.style.display = 'none';
         discountBadge.style.display = 'none';
+        gstNote.style.display = 'none';
         payBtn.disabled = true;
         return;
       }
 
       let tagsHtml = '';
-      let total = 0;
       selected.forEach(id => {
         const card = document.querySelector(`.card[data-id="${id}"]`);
-        const name = card.dataset.name;
-        const price = parseInt(card.dataset.price);
-        total += price;
-        tagsHtml += `
-          <span class="checkout-tag">
-            ${name}
-            <span class="remove-tag" onclick="event.stopPropagation(); removeItem('${id}')">✕</span>
-          </span>`;
+        tagsHtml += `<span class="checkout-tag">${card.dataset.name}<span class="remove-tag" onclick="event.stopPropagation(); removeItem('${id}')">✕</span></span>`;
       });
       itemsEl.innerHTML = tagsHtml;
 
-      // Pricing
-      const hasDiscount = selected.size >= 2;
-      const discounted = hasDiscount ? Math.round(total * 0.9) : total;
+      const { base, discount, afterDiscount, gst, total } = calcPricing();
+      const discPct = Math.round(discount * 100);
 
-      if (hasDiscount) {
+      if (discount > 0) {
+        discountBadge.textContent = `🎉 ${discPct}% BUNDLE DISCOUNT`;
         discountBadge.style.display = 'inline-block';
         originalPriceEl.style.display = 'block';
-        originalPriceEl.textContent = `₹${total.toLocaleString('en-IN')} + GST`;
+        originalPriceEl.textContent = `₹${base.toLocaleString('en-IN')} base`;
       } else {
         discountBadge.style.display = 'none';
         originalPriceEl.style.display = 'none';
       }
 
-      finalPriceEl.innerHTML = `₹${discounted.toLocaleString('en-IN')} <small>+ GST</small>`;
+      finalPriceEl.innerHTML = `₹${total.toLocaleString('en-IN')} <small>incl. GST</small>`;
       finalPriceEl.style.color = 'var(--yellow)';
+      gstNote.textContent = `After ${discPct ? discPct + '% discount + ' : ''}18% GST`;
+      gstNote.style.display = 'block';
       payBtn.disabled = false;
     }
 
-    function handlePay() {
-      // If single item, redirect directly; if multiple, open all in new tabs
-      if (selected.size === 1) {
-        const id = [...selected][0];
-        const url = document.querySelector(`.card[data-id="${id}"]`).dataset.url;
-        window.open(url, '_blank');
-      } else {
-        selected.forEach(id => {
-          const url = document.querySelector(`.card[data-id="${id}"]`).dataset.url;
-          window.open(url, '_blank');
-        });
+    /* ─── MODAL ─── */
+    function openRegistrationModal() {
+      populateModalSummary();
+      showState('form');
+      hideBanner();
+      document.getElementById('modalOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleOverlayClick(e) {
+      // Only close if we're in form or success state — not while loading
+      const isLoading = document.getElementById('redirectState').classList.contains('show');
+      if (!isLoading && e.target === document.getElementById('modalOverlay')) closeModal();
+    }
+
+    function showState(state) {
+      document.getElementById('formState').style.display      = state === 'form'     ? 'block' : 'none';
+      document.getElementById('redirectState').classList.toggle('show', state === 'redirect');
+      document.getElementById('successState').classList.toggle('show',  state === 'success');
+      // Hide close button during redirect
+      document.getElementById('modalCloseBtn').style.display = state === 'redirect' ? 'none' : 'flex';
+    }
+
+    function populateModalSummary() {
+      const { base, discount, afterDiscount, gst, total } = calcPricing();
+      const discPct = Math.round(discount * 100);
+      let itemsHtml = '';
+      selected.forEach(id => {
+        const card = document.querySelector(`.card[data-id="${id}"]`);
+        itemsHtml += `<span class="modal-order-tag">${card.dataset.name}</span>`;
+      });
+      document.getElementById('modalOrderItems').innerHTML = itemsHtml;
+      let breakdown = `Base: ₹${base.toLocaleString('en-IN')}`;
+      if (discount > 0) breakdown += `\nDiscount (${discPct}%): –₹${(base - afterDiscount).toLocaleString('en-IN')}`;
+      breakdown += `\nGST (18%): +₹${gst.toLocaleString('en-IN')}`;
+      document.getElementById('modalBreakdown').innerText = breakdown;
+      document.getElementById('modalTotal').innerHTML = `₹${total.toLocaleString('en-IN')}<small>Total Payable</small>`;
+    }
+
+    /* ─── BANNER ─── */
+    function showBanner(type, title, msg) {
+      // type: 'error' | 'warn' | 'info'
+      const banner = document.getElementById('formBanner');
+      const icons  = { error: '❌', warn: '⚠️', info: 'ℹ️' };
+      const cls    = { error: 'error-banner', warn: 'warn-banner', info: 'info-banner' };
+      banner.className = `form-banner show ${cls[type]}`;
+      document.getElementById('bannerIcon').textContent  = icons[type];
+      document.getElementById('bannerTitle').textContent = title;
+      document.getElementById('bannerMsg').innerHTML   = msg;
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hideBanner() {
+      document.getElementById('formBanner').className = 'form-banner';
+    }
+
+    /* ─── REDIRECT STEP ANIMATOR ─── */
+    function setStep(n) {
+      // n = 1,2,3 → activates step n, marks previous as done
+      for (let i = 1; i <= 3; i++) {
+        const el = document.getElementById(`step${i}`);
+        el.className = 'redirect-step' + (i < n ? ' done' : i === n ? ' active' : '');
+        if (i < n) el.querySelector('.step-icon').innerHTML = '✓';
       }
     }
-  </script>
 
+    /* ─── FORM VALIDATION ─── */
+    function validateField(id, errorId, validator) {
+      const el = document.getElementById(id);
+      const err = document.getElementById(errorId);
+      const valid = validator(el.value.trim());
+      el.classList.toggle('error', !valid);
+      err.classList.toggle('show', !valid);
+      return valid;
+    }
+
+    const VALIDATORS = {
+      f_name:        ['e_name',        v => v.length >= 2],
+      f_mobile:      ['e_mobile',      v => /^[6-9]\d{9}$/.test(v)],
+      f_email:       ['e_email',       v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)],
+      f_address:     ['e_address',     v => v.length >= 3],
+      f_company:     ['e_company',     v => v.length >= 2],
+      f_designation: ['e_designation', v => v.length >= 2],
+      f_linkedin:    ['e_linkedin',    v => v.length >= 5],
+    };
+
+    Object.entries(VALIDATORS).forEach(([id, [errId, fn]]) => {
+      document.getElementById(id).addEventListener('blur', () => validateField(id, errId, fn));
+      document.getElementById(id).addEventListener('input', () => {
+        if (document.getElementById(id).classList.contains('error')) validateField(id, errId, fn);
+      });
+    });
+
+    function validateAll() {
+      return Object.entries(VALIDATORS).map(([id, [errId, fn]]) => validateField(id, errId, fn)).every(Boolean);
+    }
+
+    /* ─── SUBMIT FLOW ─── */
+    async function handleSubmit() {
+      hideBanner();
+      if (!validateAll()) {
+        showBanner('error', 'Missing Information', 'Please fill in all required fields correctly before proceeding.');
+        return;
+      }
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.classList.add('loading');
+
+      const packageCombo = buildPackageCombo();
+      const formData = {
+        name:           document.getElementById('f_name').value.trim(),
+        email:          document.getElementById('f_email').value.trim(),
+        mobile:         document.getElementById('f_mobile').value.trim(),
+        address:        document.getElementById('f_address').value.trim(),
+        company:        document.getElementById('f_company').value.trim(),
+        designation:    document.getElementById('f_designation').value.trim(),
+        linkedinProfile:document.getElementById('f_linkedin').value.trim(),
+        packageCombo,
+        payAmount:      calcPricing().total,
+      };
+
+      try {
+        /* ── STEP 1: Register ── */
+        showState('redirect');
+        setStep(1);
+
+        const regRes = await fetch(`${BASE_URL}/makers-camp-registration`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+        const regData = await regRes.json();
+
+        const alreadyRegistered = !regData.success && regData.message?.toLowerCase().includes('already registered');
+
+        if (alreadyRegistered) {
+          showState('form');
+          btn.disabled = false;
+          btn.classList.remove('loading');
+          const paymentLink = regData.data?.generatedPaymentLink;
+          const pending = regData.data?.paymentStatus === 'pending';
+          showBanner(
+            'info',
+            'Already Registered',
+            paymentLink
+              ? `You are already registered for this package with this email. Please complete payment using <a href="${paymentLink}" target="_blank" rel="noopener noreferrer">this payment link</a>.`
+              : pending
+                ? 'You are already registered for this package with this email and have a pending payment. Please complete the existing payment or contact support.'
+                : 'You are already registered for this package with this email.'
+          );
+          return;
+        }
+
+        if (!regData.success) {
+          // Hard error on registration — go back to form and show banner
+          showState('form');
+          btn.disabled = false;
+          btn.classList.remove('loading');
+          showBanner('error', 'Registration Failed', regData.message || 'Something went wrong. Please try again.');
+          return;
+        }
+
+        /* ── STEP 2: Generate payment link ── */
+        setStep(2);
+        await sleep(400); // small UX pause so user can read step 1 ✓
+
+        const payRes = await fetch(`${BASE_URL}/genrate-payment-link-makers-camp`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email:        formData.email,
+            name:         formData.name,
+            mobile:       formData.mobile,
+            packageCombo,
+            dueDate:      new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+          }),
+        });
+        const payData = await payRes.json();
+
+        if (!payData.success) {
+          showState('form');
+          btn.disabled = false;
+          btn.classList.remove('loading');
+          showBanner('error', 'Payment Link Failed', payData.message || 'Could not generate your payment link. Please try again or contact support.');
+          return;
+        }
+
+        /* ── STEP 3: Redirect ── */
+        setStep(3);
+        await sleep(600);
+
+        const paymentResult = payData.data?.Data || payData.data || {};
+        const link = paymentResult.paymentLink || paymentResult.url || paymentResult.short_url || paymentResult.payment_link;
+
+        if (link) {
+          if (regData.data?._id) {
+            try {
+              await fetch(`${BASE_URL}/makers-camp-update/${regData.data._id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  orderId: paymentResult.orderId,
+                  razorpayOrderId: paymentResult.razorpayOrderId,
+                  generatedPaymentLink: paymentResult.paymentLink,
+                  paymentStatus: 'pending',
+                  paymentLinkCreatedAt: new Date().toISOString(),
+                }),
+              });
+            } catch (updateErr) {
+              console.warn('[Makers Camp] Failed to update registration with payment details', updateErr);
+            }
+          }
+
+          window.open(link, '_blank');
+          await sleep(800);
+          showState('success');
+
+          // If it was an already-registered case, show a slightly different message
+          if (alreadyRegistered) {
+            document.querySelector('.success-sub').textContent =
+              'You were already registered! A fresh payment link has been opened — complete payment to confirm your seat.';
+          }
+        } else {
+          // Payment link URL missing in response — treat as partial success
+          showState('form');
+          btn.disabled = false;
+          btn.classList.remove('loading');
+          showBanner('warn', 'Almost Done!', 'Registration saved but the payment link URL was not returned. Please contact makerslab@mastersunion.org or try again.');
+        }
+
+      } catch (err) {
+        // Network / unexpected error
+        showState('form');
+        btn.disabled = false;
+        btn.classList.remove('loading');
+        showBanner('error', 'Network Error', 'Could not connect to the server. Please check your internet connection and try again.');
+        console.error('[Makers Camp]', err);
+      }
+    }
+
+    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+  </script>
 </body>
 </html>
