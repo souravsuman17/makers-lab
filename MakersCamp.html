@@ -779,6 +779,36 @@
     const DISCOUNT_MAP = { 1: 0, 2: 0.20, 3: 0.30, 4: 0.40 };
     const selected = new Set();
 
+    const TRACKING_PARAM_MAP = {
+      utm_source: 'source',
+      utm_medium: 'medium',
+      utm_campaign: 'campaign',
+      utm_term: 'term',
+      utm_content: 'content',
+      campaignId: 'campaignId',
+      adGroupId: 'adGroupId',
+      creativeId: 'creativeId',
+      placement: 'placement',
+      deviceType: 'deviceType',
+      gclid: 'gclid',
+      fbclid: 'fbclid',
+      leadSource: 'leadSource',
+      leadOrigin: 'leadOrigin'
+    };
+
+    const TRACKING_PARAMS = getTrackingParams();
+
+    function getTrackingParams() {
+      const params = new URLSearchParams(window.location.search);
+      const tracking = { fullUrl: window.location.href };
+      Object.entries(TRACKING_PARAM_MAP).forEach(([queryKey, payloadKey]) => {
+        const value = params.get(queryKey);
+        if (value) tracking[payloadKey] = value;
+      });
+      tracking.device = window.innerWidth < 768 ? 'mobile' : 'desktop';
+      return tracking;
+    }
+
     /* ─── PRICING ─── */
     function getDiscount() { return DISCOUNT_MAP[selected.size] || 0; }
 
@@ -995,6 +1025,7 @@
         linkedinProfile:document.getElementById('f_linkedin').value.trim(),
         packageCombo,
         payAmount:      calcPricing().total,
+        ...TRACKING_PARAMS,
       };
 
       try {
