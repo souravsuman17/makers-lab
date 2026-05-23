@@ -901,7 +901,14 @@
     }
 
     /* ─── MODAL ─── */
+    function resetModalState() {
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = false;
+      btn.classList.remove('loading');
+    }
+
     function openRegistrationModal() {
+      resetModalState();
       populateModalSummary();
       showState('form');
       hideBanner();
@@ -912,6 +919,7 @@
     function closeModal() {
       document.getElementById('modalOverlay').classList.remove('open');
       document.body.style.overflow = '';
+      resetModalState();
     }
 
     function handleOverlayClick(e) {
@@ -1123,6 +1131,7 @@
           window.open(link, '_blank');
           await sleep(800);
           showState('success');
+          resetModalState();
 
           // If it was an already-registered case, show a slightly different message
           if (alreadyRegistered) {
