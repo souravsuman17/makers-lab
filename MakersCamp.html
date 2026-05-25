@@ -593,7 +593,7 @@
       <div class="select-ring">✓</div>
       <div class="card-img-placeholder" style="background: linear-gradient(135deg,#2e7d32 0%,#66bb6a 100%);">📱</div>
       <div class="card-body">
-        <div class="card-title">NFC Tag Making Workshop</div>
+        <div class="card-title">NFC Tag Making<br>Workshop</div>
         <div class="card-fee">Fee : ₹4,000 + GST</div>
         <div class="card-date-row">
           <div class="card-date-col"><label>Date</label><span>4 June '26</span></div>
@@ -706,28 +706,24 @@
         </div>
 
         <div class="form-group">
-          <label>Address <span class="req">*</span></label>
+          <label>Address</label>
           <input type="text" id="f_address" placeholder="City, State" />
-          <span class="field-error" id="e_address">Address is required</span>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label>Company / School <span class="req">*</span></label>
+            <label>Company / School</label>
             <input type="text" id="f_company" placeholder="Your organisation" />
-            <span class="field-error" id="e_company">Company/School is required</span>
           </div>
           <div class="form-group">
-            <label>Designation <span class="req">*</span></label>
+            <label>Designation</label>
             <input type="text" id="f_designation" placeholder="e.g. Student, Engineer" />
-            <span class="field-error" id="e_designation">Designation is required</span>
           </div>
         </div>
 
         <div class="form-group">
-          <label>LinkedIn Profile <span class="req">*</span></label>
+          <label>LinkedIn Profile</label>
           <input type="url" id="f_linkedin" placeholder="https://linkedin.com/in/your-profile" />
-          <span class="field-error" id="e_linkedin">LinkedIn URL is required</span>
         </div>
 
         <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
@@ -998,10 +994,6 @@
       f_name:        ['e_name',        v => v.length >= 2],
       f_mobile:      ['e_mobile',      v => /^[6-9]\d{9}$/.test(v)],
       f_email:       ['e_email',       v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)],
-      f_address:     ['e_address',     v => v.length >= 3],
-      f_company:     ['e_company',     v => v.length >= 2],
-      f_designation: ['e_designation', v => v.length >= 2],
-      f_linkedin:    ['e_linkedin',    v => v.length >= 5],
     };
 
     Object.entries(VALIDATORS).forEach(([id, [errId, fn]]) => {
